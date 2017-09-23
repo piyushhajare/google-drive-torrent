@@ -5,7 +5,7 @@ const driveCredentials = require('./data/driveCredentials.json');
 
 const DRIVE_CLIENT_ID = driveCredentials.clientId;
 const DRIVE_CLIENT_SECRET = driveCredentials.clientSecret;
-const DRIVE_REDIRECT_URI = process.env.DRIVE_REDIRECT_URI || 'http://127.0.0.1/login-callback';
+const DRIVE_REDIRECT_URI = process.env.DRIVE_REDIRECT_URI || 'https://enigmatic-waters-40147.herokuapp.com/dashboard';//'http://127.0.0.1/login-callback';
 const DRIVE_RETURN_FIELDS = 'id,name,webViewLink';
 const DRIVE_TORRENT_DIR = 'My torrents';
 
@@ -74,6 +74,7 @@ io.on('connection', (socket) => {
 
 /* PART I: Routes for views */
 app.get('/', (req, res) => {
+
     loggedIn(req)? res.redirect('/dashboard'): res.redirect('/home');
 });
 
